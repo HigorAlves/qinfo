@@ -10,9 +10,9 @@ import {
 import { VehicleService } from './vehicle.service'
 import { HTTP_CODE } from '~/constants/httpCode'
 import { VehicleRepository } from '~/core/vehicle/vehicle.repository'
-import { VehicleSchema } from '~/schemas/vehicle.schema'
+import { VehicleDocument, VehicleSchema } from '~/schemas/vehicle.schema'
 
-describe('LeadService', () => {
+describe('Vehicle Service', () => {
 	let service: VehicleService
 	const vehicle: IVehicle = {
 		ano: '2021',
@@ -22,6 +22,7 @@ describe('LeadService', () => {
 		placa: 'test',
 		renavam: 'test'
 	}
+	let vehicleID = ''
 
 	beforeAll(async () => {
 		const module: TestingModule = await Test.createTestingModule({
@@ -46,7 +47,25 @@ describe('LeadService', () => {
 	})
 
 	it('should create a vehicle inside database', async () => {
-		const result: IResponse = await service.registerVehicle(vehicle)
+		const result: IResponse<string> = await service.registerVehicle(vehicle)
+		vehicleID = result.data
 		expect(result.status).toEqual(HTTP_CODE.Created)
+	})
+
+	it('should get vehicle data based on ID', async () => {
+		const result: IResponse = await service.read(vehicleID)
+		expect(result.status).toEqual(HTTP_CODE.OK)
+	})
+
+	it('should not get vehicle data based on ID', async () => {
+		const result: IResponse = await service.read('')
+		expect(result.status).toEqual(HTTP_CODE.NoContent)
+	})
+
+	it('should not get a list of vehicle', async () => {
+		const result: IResponse<VehicleDocument[] | null> = await service.list()
+		expect(result.status).toEqual(HTTP_CODE.OK)
+		console.log(result.data)
+		expect(result.data).toHaveLength(1)
 	})
 })

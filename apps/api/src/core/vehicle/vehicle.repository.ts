@@ -17,7 +17,26 @@ export class VehicleRepository {
 		const result = new this.Database(data)
 		try {
 			await result.save()
+			return result.id
+		} catch (e) {
+			this.logger.error('ERROR: ', e)
+			return false
+		}
+	}
+
+	async read(id: string): Promise<VehicleDocument | boolean> {
+		try {
+			await this.Database.findById(id)
 			return true
+		} catch (e) {
+			this.logger.error('ERROR: ', e)
+			return false
+		}
+	}
+
+	async list(): Promise<VehicleDocument[] | boolean> {
+		try {
+			return await this.Database.find()
 		} catch (e) {
 			this.logger.error('ERROR: ', e)
 			return false

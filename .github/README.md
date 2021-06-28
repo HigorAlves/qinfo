@@ -11,6 +11,11 @@ A seguir detalhamos as informações para a execução  do teste. Ressaltamos qu
 - [x] Disponibilizar projeto no github
 - [x] Criar projeto backend utilizando (Node.Js)
 - [ ] Criar crud de veículos com os seguintes atributos (id, placa, chassi, renavam, modelo, marca, ano). Obs.: Os dados podem ser salvos em arquivos
+	- [x] Create
+	- [x] Read
+	- [x] List
+	- [ ] Update
+	- [ ] Delete
 - [ ] Criar teste unitários utilizando Mocha (Node) para cada uma das operações (create, read, update, delete)
 - [ ] Criar recursos rest para acesso aos dados dos veículos
 - [ ] Criar projeto front-end utilizando a tecnologia Angular 5+ (Opcional)

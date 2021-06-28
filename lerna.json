@@ -1,0 +1,11 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": ["apps/*", "packages/*", "shared/*"],
+  "command": {
+    "version": {
+      "message": "build: new release version"
+    }
+  }
+}

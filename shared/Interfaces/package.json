@@ -1,0 +1,9 @@
+{
+	"name": "@jetpack/interfaces",
+	"version": "0.6.3",
+	"private": true,
+	"main": "index.ts",
+	"scripts": {},
+	"dependencies": {},
+	"devDependencies": {}
+}

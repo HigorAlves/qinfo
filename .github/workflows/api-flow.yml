@@ -1,0 +1,56 @@
+name: CI - API flow
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - '*.md'
+      - '/apps/client/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - '*.md'
+      - '/apps/client/**'
+
+jobs:
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+          check-latest: true
+      - name: Install Dependencies
+        run: yarn install
+      - name: Eslint
+        run: yarn lint:api
+      - name: Prettier
+        run: yarn prettier:api
+  test:
+    name: Test
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      LOGDNA_KEY: ${{ secrets.LOGDNA_KEY }}
+      LOGDNA_HOST_NAME: 'GITHUB_CI'
+      LOGDNA_APP: 'NOVAC'
+      LOGDNA_ENV: 'CI'
+      JWT_SECRET: 'CI'
+      SENDGRID_API_KEY: 'SG:YOUR_API_KEY'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+          check-latest: true
+      - name: Install Dependencies
+        run: yarn install
+      - name: Run jest with CI option
+        run: yarn test:ci:api

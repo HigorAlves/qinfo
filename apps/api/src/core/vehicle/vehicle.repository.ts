@@ -26,8 +26,7 @@ export class VehicleRepository {
 
 	async read(id: string): Promise<VehicleDocument | boolean> {
 		try {
-			await this.Database.findById(id)
-			return true
+			return await this.Database.findById(id)
 		} catch (e) {
 			this.logger.error('ERROR: ', e)
 			return false
@@ -37,6 +36,16 @@ export class VehicleRepository {
 	async list(): Promise<VehicleDocument[] | boolean> {
 		try {
 			return await this.Database.find()
+		} catch (e) {
+			this.logger.error('ERROR: ', e)
+			return false
+		}
+	}
+
+	async remove(id: string): Promise<boolean> {
+		try {
+			await this.Database.findByIdAndDelete(id)
+			return true
 		} catch (e) {
 			this.logger.error('ERROR: ', e)
 			return false

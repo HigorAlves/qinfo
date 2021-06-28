@@ -43,7 +43,7 @@ export class VehicleService {
 		}
 	}
 
-	async read(id: string): Promise<IResponse> {
+	async read(id: string): Promise<IResponse<boolean | VehicleDocument>> {
 		try {
 			const result = await this.repository.read(id)
 			if (result) {
@@ -51,7 +51,8 @@ export class VehicleService {
 				return {
 					status: HTTP_CODE.OK,
 					error: false,
-					message: 'All seens ok'
+					message: 'All seens ok',
+					data: result
 				}
 			} else {
 				return {
@@ -99,6 +100,39 @@ export class VehicleService {
 				scope.addBreadcrumb({
 					category: 'VEHICLE',
 					message: 'Cannont get a list of vehicle',
+					level: Sentry.Severity.Warning
+				})
+				Sentry.captureException(new Error(e))
+			})
+			return {
+				status: HTTP_CODE.BadRequest,
+				error: true,
+				message: 'Something was wrong'
+			}
+		}
+	}
+
+	async remove(id: string): Promise<IResponse<boolean>> {
+		try {
+			const result = await this.repository.remove(id)
+			if (result) {
+				return {
+					status: HTTP_CODE.OK,
+					error: false,
+					message: 'All seens ok'
+				}
+			} else {
+				return {
+					status: HTTP_CODE.NoContent,
+					error: false,
+					message: 'All seens ok'
+				}
+			}
+		} catch (e) {
+			Sentry.withScope(scope => {
+				scope.addBreadcrumb({
+					category: 'VEHICLE',
+					message: 'Cannont delete the vehicle',
 					level: Sentry.Severity.Warning
 				})
 				Sentry.captureException(new Error(e))

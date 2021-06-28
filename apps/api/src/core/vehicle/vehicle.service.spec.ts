@@ -53,12 +53,14 @@ describe('Vehicle Service', () => {
 	})
 
 	it('should get vehicle data based on ID', async () => {
-		const result: IResponse = await service.read(vehicleID)
+		const result: IResponse<boolean | VehicleDocument> = await service.read(
+			vehicleID
+		)
 		expect(result.status).toEqual(HTTP_CODE.OK)
 	})
 
 	it('should not get vehicle data based on ID', async () => {
-		const result: IResponse = await service.read('')
+		const result: IResponse<boolean | VehicleDocument> = await service.read('')
 		expect(result.status).toEqual(HTTP_CODE.NoContent)
 	})
 
@@ -67,5 +69,12 @@ describe('Vehicle Service', () => {
 		expect(result.status).toEqual(HTTP_CODE.OK)
 		console.log(result.data)
 		expect(result.data).toHaveLength(1)
+	})
+
+	it('should delete vehicle', async () => {
+		const result: IResponse<boolean | VehicleDocument> = await service.remove(
+			vehicleID
+		)
+		expect(result.status).toEqual(HTTP_CODE.OK)
 	})
 })

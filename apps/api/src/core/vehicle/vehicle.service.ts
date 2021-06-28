@@ -144,4 +144,41 @@ export class VehicleService {
 			}
 		}
 	}
+
+	async update(
+		id: string,
+		data: IVehicle
+	): Promise<IResponse<boolean | VehicleDocument>> {
+		try {
+			const result = await this.repository.update(id, data)
+			if (result) {
+				return {
+					status: HTTP_CODE.UPDATED,
+					error: false,
+					message: 'All seens ok',
+					data: result
+				}
+			} else {
+				return {
+					status: HTTP_CODE.NoContent,
+					error: false,
+					message: 'All seens ok'
+				}
+			}
+		} catch (e) {
+			Sentry.withScope(scope => {
+				scope.addBreadcrumb({
+					category: 'VEHICLE',
+					message: 'Cannont update the vehicle',
+					level: Sentry.Severity.Warning
+				})
+				Sentry.captureException(new Error(e))
+			})
+			return {
+				status: HTTP_CODE.BadRequest,
+				error: true,
+				message: 'Something was wrong'
+			}
+		}
+	}
 }

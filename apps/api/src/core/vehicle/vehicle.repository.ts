@@ -51,4 +51,13 @@ export class VehicleRepository {
 			return false
 		}
 	}
+
+	async update(id: string, data: IVehicle): Promise<boolean | VehicleDocument> {
+		try {
+			return await this.Database.findByIdAndUpdate(id, data)
+		} catch (e) {
+			this.logger.error('ERROR: ', e)
+			return false
+		}
+	}
 }

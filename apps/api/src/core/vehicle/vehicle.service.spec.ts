@@ -77,4 +77,20 @@ describe('Vehicle Service', () => {
 		)
 		expect(result.status).toEqual(HTTP_CODE.OK)
 	})
+
+	it('should update vehicle', async () => {
+		const newVehicle: IVehicle = {
+			ano: '2022',
+			chassi: 'update',
+			marca: 'update',
+			modelo: 'update',
+			placa: 'update',
+			renavam: 'update'
+		}
+		const result: IResponse<boolean | VehicleDocument> = await service.update(
+			vehicleID,
+			newVehicle
+		)
+		expect(result.status).toEqual(HTTP_CODE.UPDATED)
+	})
 })

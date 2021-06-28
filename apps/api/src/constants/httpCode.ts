@@ -1,5 +1,6 @@
 export const HTTP_CODE = {
 	OK: 200,
+	UPDATED: 204,
 	Unauthorized: 401,
 	Created: 201,
 	BadRequest: 400,

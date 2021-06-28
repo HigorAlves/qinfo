@@ -10,7 +10,7 @@ A seguir detalhamos as informações para a execução  do teste. Ressaltamos qu
 
 - [x] Disponibilizar projeto no github
 - [x] Criar projeto backend utilizando (Node.Js)
-- [ ] Criar crud de veículos com os seguintes atributos (id, placa, chassi, renavam, modelo, marca, ano). Obs.: Os dados podem ser salvos em arquivos
+- [x] Criar crud de veículos com os seguintes atributos (id, placa, chassi, renavam, modelo, marca, ano). Obs.: Os dados podem ser salvos em arquivos
 	- [x] Create
 	- [x] Read
 	- [x] List
@@ -21,5 +21,5 @@ A seguir detalhamos as informações para a execução  do teste. Ressaltamos qu
 
 ## Todos opcionais
 
-- [ ] Criar projeto front-end utilizando a tecnologia Angular 5+ (Opcional)
-- [ ] Criar lista de veiculos. Obs.: os dados deverão ser recuperados dos recursos rest definidos na aplicação backend (Opcional)
+- [x] Criar projeto front-end utilizando a tecnologia Angular 5+ (Opcional)
+- [x] Criar lista de veiculos. Obs.: os dados deverão ser recuperados dos recursos rest definidos na aplicação backend (Opcional)

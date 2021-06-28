@@ -1,10 +1,11 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Post, Put, Res } from '@nestjs/common'
 import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { Response } from 'express'
 
 import { HTTP_CODE } from '~/constants/httpCode'
 import { VehicleService } from '~/core/vehicle/vehicle.service'
 import { VehicleCreateDto } from '~/DTOs/vehicle.create.dto'
+import { VehicleDeleteDto } from '~/DTOs/vehicle.delete.dto'
 import { VehicleUpdateDto } from '~/DTOs/vehicle.update.dto'
 
 @ApiTags('Vehicle')
@@ -20,9 +21,10 @@ export class VehicleController {
 	@Post()
 	async create(
 		@Body() data: VehicleCreateDto,
-		res: Response
+		@Res() res: Response
 	): Promise<Response> {
 		const response = await this.service.registerVehicle(data)
+		console.log(response)
 		return res.status(response.status).send(response)
 	}
 
@@ -32,7 +34,10 @@ export class VehicleController {
 		description: 'Cannot get the vehicle'
 	})
 	@Get()
-	async read(@Body() { id }: { id: string }, res: Response): Promise<Response> {
+	async read(
+		@Body() { id }: { id: string },
+		@Res() res: Response
+	): Promise<Response> {
 		const response = await this.service.read(id)
 		return res.status(response.status).send(response)
 	}
@@ -43,7 +48,7 @@ export class VehicleController {
 		description: 'Cannot get the list of vehicles'
 	})
 	@Get('/list')
-	async list(res: Response): Promise<Response> {
+	async list(@Res() res: Response): Promise<Response> {
 		const response = await this.service.list()
 		return res.status(response.status).send(response)
 	}
@@ -55,10 +60,10 @@ export class VehicleController {
 	})
 	@Delete()
 	async remove(
-		@Body() { id }: { id: string },
-		res: Response
+		@Body() body: VehicleDeleteDto,
+		@Res() res: Response
 	): Promise<Response> {
-		const response = await this.service.remove(id)
+		const response = await this.service.remove(body.id)
 		return res.status(response.status).send(response)
 	}
 
@@ -70,7 +75,7 @@ export class VehicleController {
 	@Put()
 	async update(
 		@Body() data: VehicleUpdateDto,
-		res: Response
+		@Res() res: Response
 	): Promise<Response> {
 		const response = await this.service.update(data.id, data)
 		return res.status(response.status).send(response)

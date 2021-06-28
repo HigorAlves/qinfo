@@ -20,5 +20,6 @@ import { LoggerModule } from '~/interceptors/logger.interceptor'
 		}),
 		LoggerModule,
 		VehicleModule
+	]
 })
 export class AppModule {}

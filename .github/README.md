@@ -17,6 +17,9 @@ A seguir detalhamos as informações para a execução  do teste. Ressaltamos qu
 	- [x] Update
 	- [x] Delete
 - [x] Criar teste unitários utilizando Mocha (Node) para cada uma das operações (create, read, update, delete)
-- [ ] Criar recursos rest para acesso aos dados dos veículos
+- [x] Criar recursos rest para acesso aos dados dos veículos
+
+## Todos opcionais
+
 - [ ] Criar projeto front-end utilizando a tecnologia Angular 5+ (Opcional)
 - [ ] Criar lista de veiculos. Obs.: os dados deverão ser recuperados dos recursos rest definidos na aplicação backend (Opcional)

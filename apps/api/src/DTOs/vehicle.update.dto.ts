@@ -7,6 +7,11 @@ export class VehicleUpdateDto {
 	@ApiProperty()
 	@IsNotEmpty({ message: ErrorMessages.isEmpty })
 	@IsString({ message: ErrorMessages.isString })
+	id: string
+
+	@ApiProperty()
+	@IsNotEmpty({ message: ErrorMessages.isEmpty })
+	@IsString({ message: ErrorMessages.isString })
 	ano: string
 
 	@ApiProperty()

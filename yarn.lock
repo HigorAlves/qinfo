@@ -1643,13 +1643,13 @@
     lodash "4.17.21"
     path-to-regexp "3.2.0"
 
-"@nestjs/testing@^7.6.17":
-  version "7.6.17"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.17.tgz#dab17527dbbc12c674b21de9527d280ee065932b"
-  integrity sha512-wWImNvfRapCCtLXMsxCs1Ax2Uj/qSytCnolSEXL7LnH80exwHRmBeLtTfGxArsv9Y1NHr24NarfN6H0QxysZ3g==
+"@nestjs/testing@^8.2.3":
+  version "8.2.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-8.2.3.tgz#e96a939e147b066ccfac45504f5b8b74536f79b0"
+  integrity sha512-5jDORCCfRXIWygf1/C9K9py2NGWE/5Bu+fsYQNEQyZlmGbDf2g7q/3O203hj2IVltMvrue7ea/eo1vI0fz1RsA==
   dependencies:
     optional "0.1.4"
-    tslib "2.2.0"
+    tslib "2.3.1"
 
 "@next/env@10.2.3":
   version "10.2.3"
@@ -10943,7 +10943,7 @@ strong-log-transformer@^2.1.0:
     minimist "^1.2.0"
     through "^2.3.4"
 
-styled-components@^5, styled-components@^5.3.0:
+styled-components@^5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-5.3.0.tgz#e47c3d3e9ddfff539f118a3dd0fd4f8f4fb25727"
   integrity sha512-bPJKwZCHjJPf/hwTJl6TbkSZg/3evha+XPEizrZUGb535jLImwDUdjTNxXqjjaASt2M4qO4AVfoHJNe3XB/tpQ==
@@ -11437,6 +11437,11 @@ tslib@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
   integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
+
+tslib@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
+  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
 tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"

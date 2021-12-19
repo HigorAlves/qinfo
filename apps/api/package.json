@@ -73,7 +73,7 @@
 	"devDependencies": {
 		"@nestjs/cli": "^7.6.0",
 		"@nestjs/schematics": "^7.3.1",
-		"@nestjs/testing": "^7.6.17",
+		"@nestjs/testing": "^8.2.4",
 		"@shelf/jest-mongodb": "^1.2.5",
 		"@types/bcrypt": "^5.0.0",
 		"@types/coinbase-commerce-node": "^1.0.5",
